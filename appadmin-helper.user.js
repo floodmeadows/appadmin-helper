@@ -4,7 +4,9 @@
 // @description  Avoid replying as yourself - reply as "HMRC App Team"
 // @copyright    2019, floodmeadows (https://openuserjs.org/users/floodmeadows)
 // @license      MIT
-// @version      0.1
+// @version      0.1.1
+// @updateURL https://openuserjs.org/meta/floodmeadows/AppAdmin_email_helper.meta.js
+// @downloadURL https://openuserjs.org/src/scripts/floodmeadows/AppAdmin_email_helper.user.js
 // @include      https://groups.google.com/a/digital.hmrc.gov.uk/forum/
 // @grant        none
 // ==/UserScript==
