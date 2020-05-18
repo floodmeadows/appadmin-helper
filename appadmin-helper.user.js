@@ -2,9 +2,9 @@
 // @namespace    https://openuserjs.org/users/floodmeadows
 // @name         AppAdmin email helper
 // @description  Avoid replying as yourself - reply as "HMRC App Team"
-// @copyright    2019, floodmeadows (https://openuserjs.org/users/floodmeadows)
+// @copyright    2020, floodmeadows (https://openuserjs.org/users/floodmeadows)
 // @license      MIT
-// @version      0.2.0
+// @version      0.3.0
 // @updateURL    https://openuserjs.org/meta/floodmeadows/AppAdmin_email_helper.meta.js
 // @downloadURL  https://openuserjs.org/src/scripts/floodmeadows/AppAdmin_email_helper.user.js
 // @include      https://groups.google.com/a/digital.hmrc.gov.uk/forum/
@@ -18,6 +18,7 @@
     'use strict';
 
     var h = document.getElementById('__top_header');
+    var classPrefix = "HRG2GGD";
 
     // Select the node that will be observed for mutations
     var targetNode = document;
@@ -45,8 +46,8 @@
 
     function isFromAddressSetToHmrcAppTeam() {
         var found = false;
-        for (var i = 0; i < document.getElementsByClassName("F0XO1GC-m-f").length; i++) {
-            var a = document.getElementsByClassName("F0XO1GC-m-f")[i];
+        for (var i = 0; i < document.getElementsByClassName(classPrefix + '-m-f').length; i++) {
+            var a = document.getElementsByClassName(classPrefix + '-m-f')[i];
             if(a.children.length > 0) {
                 if(a.children[0].innerHTML == "Post on behalf of HMRC App Team") {
                     found = true;
@@ -57,15 +58,15 @@
     }
 
     function updateAlert() {
-        // document.getElementsByClassName('F0XO1GC-m-a')[1].children[1].textContent
-        var buttons = document.getElementsByClassName('F0XO1GC-m-a');
+        // document.getElementsByClassName(classPrefix + '-m-a')[1].children[1].textContent
+        var buttons = document.getElementsByClassName(classPrefix + '-m-a');
         var i = 0;
         var b = [];
         if(isFromAddressSetToHmrcAppTeam()) {
             // All OK - remove any custom alert styling
-            document.getElementsByClassName("F0XO1GC-vb-r")[0].children[0].children[0].children[0].children[0].style.padding = "";
-            document.getElementsByClassName("F0XO1GC-vb-r")[0].children[0].children[0].children[0].children[1].style.padding = "";
-            document.getElementsByClassName("F0XO1GC-vb-r")[0].children[0].children[0].children[0].style.backgroundColor = "";
+            document.getElementsByClassName(classPrefix + '-vb-r')[0].children[0].children[0].children[0].children[0].style.padding = "";
+            document.getElementsByClassName(classPrefix + '-vb-r')[0].children[0].children[0].children[0].children[1].style.padding = "";
+            document.getElementsByClassName(classPrefix + '-vb-r')[0].children[0].children[0].children[0].style.backgroundColor = "";
             // Reset colour of "Post" buttons back to green and enable them
             for (i = 0; i < buttons.length; i++) {
                 b = buttons[i];
@@ -79,7 +80,7 @@
             }
         } else {
             // WOAH! You're about to post as yourself, when you really should be posting as HMRC App Team!
-            document.getElementsByClassName("F0XO1GC-vb-r")[0].children[0].children[0].children[0].style.backgroundColor = "red";
+            document.getElementsByClassName(classPrefix + '-vb-r')[0].children[0].children[0].children[0].style.backgroundColor = "red";
             // Change "Post" buttons to grey and disable them
             for (i = 0; i < buttons.length; i++) {
                 b = buttons[i];
